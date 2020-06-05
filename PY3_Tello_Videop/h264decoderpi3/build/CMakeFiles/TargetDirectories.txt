@@ -1,0 +1,8 @@
+/home/pineland/Tello-Python/PY3_Tello_Videop/h264decoderpi3/build/CMakeFiles/install/strip.dir
+/home/pineland/Tello-Python/PY3_Tello_Videop/h264decoderpi3/build/CMakeFiles/install/local.dir
+/home/pineland/Tello-Python/PY3_Tello_Videop/h264decoderpi3/build/CMakeFiles/install.dir
+/home/pineland/Tello-Python/PY3_Tello_Videop/h264decoderpi3/build/CMakeFiles/list_install_components.dir
+/home/pineland/Tello-Python/PY3_Tello_Videop/h264decoderpi3/build/CMakeFiles/rebuild_cache.dir
+/home/pineland/Tello-Python/PY3_Tello_Videop/h264decoderpi3/build/CMakeFiles/edit_cache.dir
+/home/pineland/Tello-Python/PY3_Tello_Videop/h264decoderpi3/build/CMakeFiles/h264decoder.dir
+/home/pineland/Tello-Python/PY3_Tello_Videop/h264decoderpi3/build/CMakeFiles/h264decoder_test1.dir

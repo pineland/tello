@@ -1,0 +1,44 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/pineland/Tello-Python/PY3_Tello_Videop/h264decoderpi3/h264decoder.cpp
+libavcodec/avcodec.h
+-
+libavutil/avutil.h
+-
+libavutil/mem.h
+-
+libswscale/swscale.h
+-
+h264decoder.hpp
+/home/pineland/Tello-Python/PY3_Tello_Videop/h264decoderpi3/h264decoder.hpp
+utility
+-
+
+/home/pineland/Tello-Python/PY3_Tello_Videop/h264decoderpi3/h264decoder.hpp
+cstdlib
+-
+stdexcept
+-
+cstddef
+-
+
+/home/pineland/Tello-Python/PY3_Tello_Videop/h264decoderpi3/h264decoder_test1.cpp
+cstdio
+-
+cstdlib
+-
+stdexcept
+-
+vector
+-
+libavcodec/avcodec.h
+-
+h264decoder.hpp
+/home/pineland/Tello-Python/PY3_Tello_Videop/h264decoderpi3/h264decoder.hpp
+
