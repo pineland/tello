@@ -1,7 +1,7 @@
 # Preface
 This package is copied from https://github.com/f41ardu/Tello-Python/tree/master/PY3_Tello_Videop and converted python 3.5 to 3.6.
 
-# h264decoder - class libh264decoder
+# H264 Decoder
 
 ## H264 Decoder Python Module
 The aim of this project is to provide a simple decoder for video
