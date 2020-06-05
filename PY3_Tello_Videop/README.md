@@ -28,7 +28,7 @@ The code might also serve as example for libav and boost python usage.
 ```
     mkdir build
     cd build 
-    cmake ../CMakeList.txt -DPython_ADDITIONAL_VERSIONS=3.5 -DBoost_PYTHON_LIBRARY_RELEASE=/usr/lib/x86_64-linux-gnu/libboost_python-py35.so ../
+    cmake ../CMakeList.txt -DPython_ADDITIONAL_VERSIONS=3.6 -DBoost_PYTHON_LIBRARY_RELEASE=/usr/lib/x86_64-linux-gnu/libboost_python-py36.so ../
     make
 ``` 
  
@@ -44,7 +44,7 @@ as appropriate for your system.
    make
 ```
 To build for Python 3, define Python_ADDITIONAL_VERSIONS. In CMake-Gui you have to manually make a cache entry before configuring. Moreover, this script does not find the correct version of boost python. You have to check and set it manually if needed. E.g. on my Raspberry system I have libboost_python-py35.so and libboost_python-py27.so. To make a long story short, you probably want to use something like
-```cmake ../CMakeList.txt-DPython_ADDITIONAL_VERSIONS=3.6 /usr/lib/arm-linux-gnueabihf/libboost_python-py35.so ...```
+```cmake ../CMakeList.txt-DPython_ADDITIONAL_VERSIONS=3.6 /usr/lib/arm-linux-gnueabihf/libboost_python-py36.so ...```
 as appropriate for your system.
 
 
