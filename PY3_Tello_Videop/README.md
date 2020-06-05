@@ -1,95 +1,61 @@
 # Preface
 This package is copied from https://github.com/f41ardu/Tello-Python/tree/master/PY3_Tello_Videop and converted python 3.5 to 3.6.
 
-# Tello-Video
+# h264decoder - class libh264decoder
 
-This is an example using the Tello SDK v1.3.0.0 and above to receive video stream from Tello camera,decode the video stream and show the image by GUI.
+## H264 Decoder Python Module
+The aim of this project is to provide a simple decoder for video
+captured by a Raspberry Pi camera. At the time of this writing I only
+need H264 decoding, since a H264 stream is what the RPi software 
+delivers. Furthermore flexibility to incorporate the decoder in larger
+python programs in various ways is desirable.
 
- - Written in Python 3.6 
- - Tello SDK v1.3.0.0 and above(with h.264 video streaming)
- - This example includes a simple UI build with Tkinter to interact with Tello
- - Interactive control of Tello based on human movement is achieved via body pose recognition module.
+The code might also serve as example for libav and boost python usage.
 
-## Prerequisites
+## Files
+* `h264decoder.hpp`, `h264decoder.cpp` and `h264decoder_python.cpp` contain the module code.
+* Other source files are tests and demos.
 
-- Python3.6
-- pip
-- Python OpenCV
-- Numpy 
-- PIL
-- libboost-python
-- Tkinter
-- homebrew(for mac)
-- Python h264 decoder
-    - <https://github.com/DaWelter/h264decoder> Devlopement Branch
-
-## Run the project
-- **Step1**. Turn on Tello and connect your computer device to Tello via wifi.
+## Requirements
+* Python 2 and 3 should both work.
+* cmake for building
+* libav
+* boost python
 
 
-- **Step2**. Open project folder in terminal. Run:
-    
-    ```
-    python main.py
-    ```
-
-- **Step3**. A UI will show up, you can now:
-
-    - Watch live video stream from the Tello camera;
-    - Take snapshot and save jpg to local folder;
-    - Open Command Panel, which allows you to:
-        - Take Off
-        - Land
-        - Flip (in forward, backward, left and right direction)
-        - Control Tello using keyboard inputs:
-            - **[key-Up]** move forward 20cm
-            - **[key-Down]** move backward 20cm
-            - **[key-Left]** move left 20 cm
-            - **[key-Right]** move right 20 cm
-            - **[key-w]** move up 20cm
-            - **[key-s]** move down 20cm
-            - **[key-a]** rotate counter-clockwise by 30 degree
-            - **[key-d]** rotate clockwise by 30 degree
-        -  You can also adjust the **distance** and **degree** via the trackbar and hit the "reset distance" or "reset degree" button to customize your own control.
-    
-## Project Description
-
-### tello.py - class Tello
-
-Wrapper class to interact with Tello drone.
-Modified from <https://github.com/microlinux/tello>
-
-The object starts 2 threads:
-
- 1. thread for receiving command response from Tello
- 2. thread for receiving video stream
-
-You can use **read()** to read the last frame from Tello camera, and pause the video by setting **video_freeze(is_freeze=True)**.
-
-### tello_control_ui.py - class TelloUI
-
-Modified from: https://www.pyimagesearch.com/2016/05/30/displaying-a-video-feed-with-opencv-and-tkinter/
-
-Build with Tkinter. Display video, control video play/pause and control Tello using buttons and arrow keys.
-
-### h264decoder - class libh264decoder
-
-From <https://github.com/DaWelter/h264decoder>.
-
-A c++ based class that decodes raw h264 data. This module interacts with python language via python-libboost library, and its decoding functionality is based on ffmpeg library. 
-
-After compilation, a libh264decoder.so or libh264decoder.pyd file will be placed in the working directory so that the main python file can reference it. 
-
-If you have to compile it from source,with Linux or Mac,you can:
-
+## Notes:
+* Linux: 
 ```
-cd h264decoder
-mkdir build
-cd build
-cmake ..
-See detailed description in h264decode/readme.md and follow the instruction 
-for cmake 
-make
-cp libh264decoder.so ../../
-```
+    mkdir build
+    cd build 
+    cmake ../CMakeList.txt -DPython_ADDITIONAL_VERSIONS=3.5 -DBoost_PYTHON_LIBRARY_RELEASE=/usr/lib/x86_64-linux-gnu/libboost_python-py35.so ../
+    make
+``` 
+ 
+To build for Python 3, define Python_ADDITIONAL_VERSIONS. In CMake-Gui you have to manually make a cache entry before configuring. Moreover, this script does not find the correct version of boost python. You have to check and set it manually if needed. E.g. on my Ubuntu system I have libboost_python-py35.so and libboost_python-py27.so. To make a long story short, you probably want to use something like
+```cmake ../CMakeList.txt -DPython_ADDITIONAL_VERSIONS=3.5 -DBoost_PYTHON_LIBRARY_RELEASE=/usr/lib/x86_64-linux-gnu/libboost_python-py35.so ../```
+as appropriate for your system.
 
+* Raspberry Pi: (be aware Raspbian Buster is already on Python 3.7, check your Python release on your system) 
+```
+   mkdir build
+   cd build 
+    cmake ../CMakeList.txt -DPython_ADDITIONAL_VERSIONS=3.7 -DBoost_PYTHON_LIBRARY_RELEASE=/usr/lib/usr/lib/arm-linux-gnueabihf/libboost_python37.so ../   
+   make
+```
+To build for Python 3, define Python_ADDITIONAL_VERSIONS. In CMake-Gui you have to manually make a cache entry before configuring. Moreover, this script does not find the correct version of boost python. You have to check and set it manually if needed. E.g. on my Raspberry system I have libboost_python-py35.so and libboost_python-py27.so. To make a long story short, you probably want to use something like
+```cmake ../CMakeList.txt-DPython_ADDITIONAL_VERSIONS=3.6 /usr/lib/arm-linux-gnueabihf/libboost_python-py35.so ...```
+as appropriate for your system.
+
+
+* Added experimental support for building with MSVC on windows. I managed to build with the libav distribution from the official download "libav-11.3-win64.7z". Boost python 1.67 built from sources, after applying the patch for some issue (https://github.com/boostorg/python/issues/193). Link to the multi threaded release dll configuration, e.g. boost_python37-vc140-mt-x64-1_67.lib. 
+* Building on Linux for 2.7 should be straight forward, provided the requirements are in the usual system locations.
+* Routines work with the ```str``` type in Python 2 and ```bytes``` type in Python 3.
+
+## Todo
+* Add a video clip for testing and remove hard coded file names in demos/tests.
+* Find boost python for desired python version, at least for boost > 1.67 where it should be possible according to the docs (https://cmake.org/cmake/help/latest/module/FindBoost.html)
+
+
+## License
+The code is published under the Mozilla Public License v. 2.0. 
