@@ -1,15 +1,18 @@
+# Preface
+This package is copied from https://github.com/f41ardu/Tello-Python/tree/master/PY3_Tello_Videop and converted python 3.5 to 3.6.
+
 # Tello-Video
 
 This is an example using the Tello SDK v1.3.0.0 and above to receive video stream from Tello camera,decode the video stream and show the image by GUI.
 
- - Written in Python 3.5 
+ - Written in Python 3.6 
  - Tello SDK v1.3.0.0 and above(with h.264 video streaming)
  - This example includes a simple UI build with Tkinter to interact with Tello
  - Interactive control of Tello based on human movement is achieved via body pose recognition module.
 
 ## Prerequisites
 
-- Python3.5
+- Python3.6
 - pip
 - Python OpenCV
 - Numpy 
@@ -19,35 +22,6 @@ This is an example using the Tello SDK v1.3.0.0 and above to receive video strea
 - homebrew(for mac)
 - Python h264 decoder
     - <https://github.com/DaWelter/h264decoder> Devlopement Branch
-
-## Installation
-
-In order to facilitate you to install python3.5 and various dependencies, we have written a one-click installation script for windows, Linux and macos. You can choose to run this script for the one-click installation, or you can download python3.5 and related libraries and dependencies online. If you have questions about the actions that the script performs, you can open the script with an editor and look up the comments for each instruction in the script. In addition, we have additionally written an uninstall script that cleans and restores all downloaded and configured content from the one-click installation script.
-
-- **Windows**
-
-    Go to the "install\Windows" folder,select and run the correct  "windows_install.bat" according to your computer operating system bits. 
-
-- **Linux (Ubuntu 14.04 and above)**
-
-    Go to the "install\Linux" folder in command line, run
-    
-    ```
-    chmod +x linux_install.sh
-    ./linux_install.sh
-    ```
-
-- **Mac**
-
-   1. Make sure you have the latest Xcode command line tools installed. If not, you might need to update your OS X and XCode to the latest version in order to compile the h264 decoder module
-   2. Go to the "install\Mac" folder folder in command line, run
-   
-  ```
-     chmod a+x ./mac_install.sh
-     ./mac_install.sh
-  ```
-    
-    If you see no errors during installation, you are good to go!
 
 ## Run the project
 - **Step1**. Turn on Tello and connect your computer device to Tello via wifi.
@@ -117,9 +91,5 @@ See detailed description in h264decode/readme.md and follow the instruction
 for cmake 
 make
 cp libh264decoder.so ../../
-```
-With Windows,you can create a project through visual studio, add files in h264decoder and dependencies such as ffmpeg and libboost, compile the project and generate a libh264decoder.pyd file.We have generated a libh264decoder.pyd and put it in the "\h264decoder\Windows"foleder so that you can copy put it to "python/site-package".
+``
 
-##Contact Information
-
-If you have any questions about this sample code and the installation, please feel free to contact me. You can communicate with me by sending e-mail to sdk@ryzerobotics.com.
