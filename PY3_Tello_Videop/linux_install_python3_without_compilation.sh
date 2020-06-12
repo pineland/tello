@@ -1,16 +1,19 @@
 #!/bin/sh
 
 # install python 3.6
+echo 'install python 3.6'
 sudo apt-get update -y
 sudo apt-get install python3.6 python3-pip -y
 
 #switch to python3.6
+echo 'switch to python3.6'
 sudo update-alternatives --remove python /usr/bin/python2
 sudo update-alternatives --remove python /usr/bin/python3
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 100 
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 150
 
 # install dependencies
+echo 'install dependencies'
 sudo apt-get install libboost-all-dev -y
 sudo apt-get install libavcodec-dev -y
 sudo apt-get install libswscale-dev -y
